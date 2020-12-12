@@ -28,6 +28,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		25506AD42584C7CF0059A40E /* example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		25BB2271258372C30035CE43 /* asset_creator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = asset_creator; sourceTree = BUILT_PRODUCTS_DIR; };
 		25BB2274258372C30035CE43 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		25BB227C258373490035CE43 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		25BB2268258372C30035CE43 = {
 			isa = PBXGroup;
 			children = (
+				25506AD42584C7CF0059A40E /* example.json */,
 				25BB2273258372C30035CE43 /* AssetCreator */,
 				25BB2272258372C30035CE43 /* Products */,
 			);
