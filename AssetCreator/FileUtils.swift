@@ -36,4 +36,17 @@ class FileUtils {
             }
         }
     }
+    
+    /// Tries to load a configuration JSON from a file at a given path
+    /// - Parameter path: The JSON file path
+    /// - Returns: An array of ConfigurationEntry
+    class func loadConfiguration(fromPath path:String) -> [ConfigurationEntry]? {
+        let fileUrl = URL(fileURLWithPath: path)
+        guard let fileString = try? String(contentsOf: fileUrl),
+              let data = fileString.removingPercentEncoding?.data(using: .utf8) else {
+            return nil
+        }
+        let configuration = try? JSONDecoder().decode([ConfigurationEntry].self, from: data)
+        return configuration
+    }
 }
