@@ -17,6 +17,19 @@ struct AssetImage {
 /// Helper class to create assets from a single image
 /// based on an array of AssetImage
 class AssetCreatorHelper {
+    init(withConfigurationAtPath path:String?) {
+        if let path = path,
+           let configuration = FileUtils.loadConfiguration(fromPath: path) {
+            assetsToProcess = configuration.map({ entry in
+                let size = CGSize(width:entry.width, height:entry.height)
+                return AssetImage(size:size, suffix: entry.suffix)
+            })
+        }
+        else {
+            print("Using default configuration")
+            assetsToProcess = defaultConfiguration
+        }
+    }
     /// Create all the asset images from an image
     /// - Parameters:
     ///   - path: The image path
@@ -35,6 +48,7 @@ class AssetCreatorHelper {
     }
     
     // MARK: - Private
+    private var assetsToProcess:[AssetImage] = []
     
     /// Create the asset from a CGImage
     /// - Parameters:
@@ -48,7 +62,7 @@ class AssetCreatorHelper {
         if FileUtils.createDirIfNotExists(path: outputPath) == false {
             return false
         }
-        for asset in defaultAssetImages {
+        for asset in assetsToProcess {
             guard let resizedImage = ImageUtils.resizeImage(cgImage, size: asset.size) else {
                 print("error while resizing image")
                 return false
