@@ -7,7 +7,7 @@
 
 import Foundation
 
-let defaultAssetImages:[AssetImage] = [
+let defaultConfiguration:[AssetImage] = [
     AssetImage(size: CGSize(width: 20, height: 20),   suffix: "-20x20@1x"),
     AssetImage(size: CGSize(width: 40, height: 40),   suffix: "-20x20@2x"),
     AssetImage(size: CGSize(width: 60, height: 60),   suffix: "-20x20@3x"),
@@ -27,3 +27,11 @@ let defaultAssetImages:[AssetImage] = [
     AssetImage(size: CGSize(width: 228, height: 228), suffix: "-76x76@3x"),
     AssetImage(size: CGSize(width: 167, height: 167), suffix: "-83x83@2x")
 ]
+
+/// Used to parse a JSON file with the asset to produce
+/// The array of ConfigurationEntry is mapped to an array of AssetImage
+struct ConfigurationEntry:Decodable {
+    var width:Int
+    var height:Int
+    var suffix:String
+}
